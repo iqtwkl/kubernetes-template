@@ -1,0 +1,30 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: app-name
+  name: route-name
+  namespace: your-namespace
+spec:
+  host: url-hostname.apps.domain.com
+  port:
+    targetPort: 8080-tcp # port name on service
+  tls:
+    caCertificate: |-
+      -----BEGIN CERTIFICATE-----
+      cacerts
+      -----END CERTIFICATE-----
+    certificate: |-
+      -----BEGIN CERTIFICATE-----
+      certs
+      -----END CERTIFICATE-----
+    key: |-
+      -----BEGIN PRIVATE KEY-----
+      key
+      -----END PRIVATE KEY-----
+    termination: edge
+  to:
+    kind: Service
+    name: service-name
+    weight: 100
+  wildcardPolicy: None

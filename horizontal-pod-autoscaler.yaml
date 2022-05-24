@@ -1,0 +1,15 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: app-name
+  name: hpa-name
+  namespace: your-namespace
+spec:
+  maxReplicas: 8
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: v1
+    kind: DeploymentConfig
+    name: dc-name
+  targetCPUUtilizationPercentage: 80 # autoscaler will triggered when cpu utilization 80%

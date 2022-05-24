@@ -1,0 +1,38 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: deployment-name
+  namespace: your-namespace
+  labels:
+    app: app-name
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: app-name
+  template:
+    metadata:
+      labels:
+        app: app-name
+    spec:
+      containers:
+        - name: container-name
+          image: 'pull-image.url/path/image-name:latest'
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:              
+              cpu: 600m
+              memory: 1000Mi
+            request:
+              cpu: 600m
+              memory: 1000Mi
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      serviceAccountName: service-account-name
+      serviceAccount: service-account-name

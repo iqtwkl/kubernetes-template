@@ -1,0 +1,10 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: configmap-name
+  namespace: your-namespace
+data:
+  KEY: value
+  STRING_OF_NUMBER: '8080'
+  URL: 'https://some.url/some-routes:1234'
+  INTEGER: 1
