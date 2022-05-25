@@ -1,0 +1,25 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: cluster-admin-rb-name
+  namespace: namespace-name
+  uid: adcf756b-ad47-4e77-bbda-00dd0e4973e7
+  resourceVersion: '62278147'
+  creationTimestamp: '2022-05-25T00:55:57Z'
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: rbac.authorization.k8s.io/v1
+      time: '2022-05-25T00:55:57Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:roleRef': {}
+        'f:subjects': {}
+subjects:
+  - kind: User
+    apiGroup: rbac.authorization.k8s.io
+    name: user-name
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin # default kube role
